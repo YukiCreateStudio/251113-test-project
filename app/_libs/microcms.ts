@@ -4,6 +4,7 @@ import type {
   MicroCMSQueries,
   MicroCMSImage,
   MicroCMSListContent,
+  MicroCMSContentId,
 } from "microcms-js-sdk";
 
 export type Category = {
@@ -16,8 +17,9 @@ export type News = {
   category: { name: string };
   publishedAt: string;
   createdAt: string;
-  thumbnail:MicroCMSImage;
-} & MicroCMSListContent;
+  thumbnail: MicroCMSImage;
+} & MicroCMSListContent &
+  MicroCMSContentId;
 
 export type MembersType = {
   id: string;
@@ -53,5 +55,17 @@ export const getNewsList = async (queries?: MicroCMSQueries) => {
     endpoint: "news",
     queries,
   });
-  return listData
+  return listData;
+};
+
+export const getNewsDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  const detailData = await client.getListDetail<News>({
+    endpoint: "news",
+    contentId,
+    queries,
+  });
+  return detailData;
 };
