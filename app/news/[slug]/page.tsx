@@ -1,4 +1,6 @@
 import { getNewsDetail } from "@/app/_libs/microcms";
+import Article from "@/app/_components/Article";
+import ButtonLink from "@/app/_components/ButtonLink";
 import styles from "./page.module.css";
 
 type Props = {
@@ -10,13 +12,11 @@ type Props = {
 export default async function page({ params }: Props) {
   const data = await getNewsDetail(params.slug);
   return (
-    <>
-      {JSON.stringify(data)}
-      <main>
-        <h1 className={styles.title}>{data.title}</h1>
-        <p className={styles.description}>{data.description}</p>
-        <div></div>
-      </main>
-    </>
+    <div>
+      <Article data={data} />
+      <div className={styles.footer}>
+        <ButtonLink href="/news">ニュース一覧へ</ButtonLink>
+      </div>
+    </div>
   );
 }

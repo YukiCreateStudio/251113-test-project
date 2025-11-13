@@ -7,7 +7,6 @@ export default async function page() {
   return (
     <>
       <NewsList news={data.contents} />
-      {console.log(data.contents.slice(0, 1))}
     </>
   );
 }
