@@ -4,7 +4,6 @@ import Category from "../Category";
 import Date from "../Date";
 import Image from "next/image";
 
-
 type Props = {
   data: News;
 };
@@ -16,7 +15,7 @@ export default function Article({ data }: Props) {
       <p className={styles.description}>{data.description}</p>
       <div className={styles.meta}>
         <Category category={data.category} />
-        <Date date={data.publishedAt ?? data.createdAt}/>
+        <Date date={data.publishedAt ?? data.createdAt} />
       </div>
       {data.thumbnail && (
         <Image
@@ -29,7 +28,7 @@ export default function Article({ data }: Props) {
       )}
       <div
         className={styles.content}
-        dangerouslySetInnerHTML={{__html:data.content,}}
+        dangerouslySetInnerHTML={{ __html: data.content }}
       />
     </main>
   );
