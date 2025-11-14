@@ -26,9 +26,9 @@ export default function Article({ data }: Props) {
           className={styles.thumbnail}
         />
       )}
-      <div
-        className={styles.content}
-        dangerouslySetInnerHTML={{ __html: data.content }}
+
+      <div className={styles.content}
+         dangerouslySetInnerHTML={{__html:data.content,}}
       />
     </main>
   );
